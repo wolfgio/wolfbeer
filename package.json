@@ -22,6 +22,7 @@
     "apollo-boost": "^0.4.7",
     "graphql": "^14.5.8",
     "history": "^4.10.1",
+    "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
