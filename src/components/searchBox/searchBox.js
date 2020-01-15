@@ -1,9 +1,8 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import SearchIcon from '../../assets/search.png';
 import GPSIcon from '../../assets/gps.png';
-
-import { history } from '../../lib/utils';
 
 import {
   BoxContainer,
@@ -15,11 +14,27 @@ import {
 
 let autocomplete;
 
-const SearchBox = () => {
+const SearchBox = (props) => {
   function onSelectedAddress() {
     const place = autocomplete.getPlace();
-    history.push(`/products?lat=${place.geometry.location.lat()}&lng=${place.geometry.location.lng()}&address=${place.formatted_address}`);
+    props.addressChanged(
+      place.geometry.location.lat(),
+      place.geometry.location.lng(),
+      place.formatted_address,
+    );
   }
+
+  const searchWithUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        props.addressChanged(
+          position.coords.latitude,
+          position.coords.longitude,
+          'Localização atual',
+        );
+      });
+    }
+  };
 
   window.initAutocomplete = () => {
     autocomplete = new google.maps.places.Autocomplete(
@@ -44,16 +59,15 @@ const SearchBox = () => {
     }
   };
 
-  const searchWithUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        history.push(`/products?lat=${position.coords.latitude}&lng=${position.coords.longitude}&address=Localização atual`);
-      });
-    }
-  };
-
   return (
     <>
+      <Helmet>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa3wgNvOQdc6JblZfxtKhE99JFhI_cA5c&libraries=places&callback=initAutocomplete"
+          async
+          defer
+        />
+      </Helmet>
       <BoxContainer>
         <Icon src={SearchIcon} />
         <SearchInput
