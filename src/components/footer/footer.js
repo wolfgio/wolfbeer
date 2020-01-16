@@ -11,6 +11,7 @@ const Footer = () => (
     <p>
       Icons made by
       <a href="https://www.flaticon.com/authors/ddara" title="dDara" rel="noreferrer noopener" target="_blank"> dDara,</a>
+      <a href="https://www.flaticon.com/authors/srip" title="srip"> srip,</a>
       <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a>
       and
       <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn"> bqlqn </a>
