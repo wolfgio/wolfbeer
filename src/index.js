@@ -4,9 +4,11 @@ import { Router, Switch, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import 'normalize.css';
 
-import Layout from './components/layout/layout';
 import GlobalStyle from './style';
+
+import Layout from './components/layout/layout';
 import Home from './pages/home/home';
+import Products from './pages/products/products';
 
 import { history, client } from './lib/utils';
 
@@ -19,6 +21,9 @@ const Main = () => (
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route path="/products">
+              <Products />
             </Route>
           </Switch>
         </Router>

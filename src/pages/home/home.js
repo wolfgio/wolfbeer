@@ -1,86 +1,40 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
+import React, { useEffect, useState } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
 import moment from 'moment-timezone';
 
 import SearchBox from '../../components/searchBox/searchBox';
+import LoadingWall from '../../components/loadingWall/loadingWall';
 import { Container } from './styles';
 
-import { history, client } from '../../lib/utils';
-
-const SEARCH_POC = gql`
-  query pocSearchMethod($now: DateTime!, $algorithm: String!, $lat: String!, $long: String!) {
-    pocSearch(now: $now, algorithm: $algorithm, lat: $lat, long: $long) {
-      __typename
-      id
-      status
-      tradingName
-      officialName
-      deliveryTypes {
-        __typename
-        pocDeliveryTypeId
-        deliveryTypeId
-        price
-        title
-        subtitle
-        active
-      }
-      paymentMethods {
-        __typename
-        pocPaymentMethodId
-        paymentMethodId
-        active
-        title
-        subtitle
-      }
-      pocWorkDay {
-        __typename
-        weekDay
-        active
-        workingInterval {
-          __typename
-          openingTime
-          closingTime
-        }
-      }
-      address {
-        __typename
-        address1
-        address2
-        number
-        city
-        province
-        zip
-        coordinates
-      }
-      phone {
-        __typename
-        phoneNumber
-      }
-    }
-  }
-`;
-
+import { SEARCH_POC } from './queries';
+import { history } from '../../lib/utils';
 
 const Home = () => {
+  const [searchPOC, { data, loading }] = useLazyQuery(SEARCH_POC);
+  const [address, setAddress] = useState('');
+
+  useEffect(() => {
+    if (data && data.pocSearch && data.pocSearch.length > 0) {
+      history.push(`/products?poc_id=${data.pocSearch[0].id}&address=${address}`);
+    }
+  }, [data]);
+
   const onAddressChanged = (latitude, longitude, formattedAddress) => {
     const now = moment().tz('America/Sao_Paulo');
-    client.query({
-      query: SEARCH_POC,
+    setAddress(formattedAddress);
+    searchPOC({
       variables: {
         lat: latitude.toString(),
         long: longitude.toString(),
         algorithm: 'NEAREST',
         now: now.utc(true).toISOString(),
       },
-    }).then((result) => {
-      if (result.data.pocSearch && result.data.pocSearch.length > 0) {
-        history.push(`/products?poc_id=${result.data.pocSearch[0].id}&address=${formattedAddress}`);
-      }
     });
   };
 
   return (
     <Container>
+      <LoadingWall loading={loading} />
       <SearchBox addressChanged={onAddressChanged} />
     </Container>
   );
