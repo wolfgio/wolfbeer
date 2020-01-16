@@ -2,14 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import SearchIcon from '../../assets/search.png';
-import GPSIcon from '../../assets/gps.png';
 
 import {
   BoxContainer,
   Icon,
   SearchInput,
-  LocationButton,
-  LocationIcon,
 } from './styles';
 
 let autocomplete;
@@ -23,18 +20,6 @@ const SearchBox = (props) => {
       place.formatted_address,
     );
   }
-
-  const searchWithUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        props.addressChanged(
-          position.coords.latitude,
-          position.coords.longitude,
-          'Localização atual',
-        );
-      });
-    }
-  };
 
   window.initAutocomplete = () => {
     autocomplete = new google.maps.places.Autocomplete(
@@ -77,12 +62,6 @@ const SearchBox = (props) => {
           onFocus={onInputFocus}
         />
       </BoxContainer>
-      {navigator.geolocation && (
-        <LocationButton onClick={searchWithUserLocation}>
-          <LocationIcon src={GPSIcon} />
-          <p>Usar localização</p>
-        </LocationButton>
-      )}
     </>
   );
 };

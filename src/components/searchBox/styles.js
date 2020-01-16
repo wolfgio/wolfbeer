@@ -28,31 +28,3 @@ export const SearchInput = styled.input`
     opacity: 0.8;
   }
 `;
-
-export const LocationButton = styled.button`
-  margin-top: 16px;
-  background-color: transparent;
-  border: solid 1px transparent;
-  border-radius: 8px;
-  padding: 8px 16px;
-  outline: none;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  transition: all .1s;
-  opacity: 0.7;
-
-  &:hover {
-    cursor: pointer;
-    border-color: #333;
-  }
-
-  &:active {
-    opacity: 0.4;
-  }
-`;
-
-export const LocationIcon = styled.img`
-  height: 16px;
-  margin-right: 8px;
-`;
