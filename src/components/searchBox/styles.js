@@ -8,6 +8,10 @@ export const BoxContainer = styled.div`
   max-width: 680px;
   margin: 0 16px;
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    width: auto;
+  }
 `;
 
 export const Icon = styled.img`
@@ -26,5 +30,13 @@ export const SearchInput = styled.input`
   font-weight: 300;
   &::placeholder {
     opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.7rem;
+  }
+
+  @media screen and (max-width: 425px) {
+    font-size: 1.5rem;
   }
 `;

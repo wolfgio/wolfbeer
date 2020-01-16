@@ -46,6 +46,20 @@ export const CardGrid = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 16px;
   grid-column-gap: 16px;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 100%;
+  }
+
+
 `;
 
 export const SearchInput = styled.input`

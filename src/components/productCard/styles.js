@@ -30,6 +30,7 @@ export const CardTitle = styled.h4`
 
 export const CardImage = styled.img`
   height: 50%;
+  object-fit: contain;
 `;
 
 export const CardButtonsWrapper = styled.div`

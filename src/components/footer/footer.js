@@ -8,7 +8,7 @@ const Footer = () => (
       made it by
       <a href="https://www.github.com/wolfgio" rel="noreferrer noopener" title="Wolfgio" target="_blank"> Wolfgio</a>
     </p>
-    <p>
+    <p style={{ textAlign: 'center' }}>
       Icons made by
       <a href="https://www.flaticon.com/authors/ddara" title="dDara" rel="noreferrer noopener" target="_blank"> dDara,</a>
       <a href="https://www.flaticon.com/authors/srip" title="srip"> srip,</a>
