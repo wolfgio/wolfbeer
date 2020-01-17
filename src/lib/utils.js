@@ -1,8 +1,10 @@
 import { createBrowserHistory } from 'history';
 import { useState, useEffect } from 'react';
 import ApolloClient from 'apollo-boost';
+import fetch from 'unfetch';
 
 export const client = new ApolloClient({
+  fetch,
   uri: 'https://api.code-challenge.ze.delivery/public/graphql',
 });
 
@@ -25,12 +27,12 @@ export const useDebounce = (delay) => {
 };
 
 export const formatCurrency = (amount) => {
-  if (amount && amount > 0) {
+  if (amount && typeof amount === 'number') {
     const formattedAmount = new Intl.NumberFormat(
       'pt-BR',
       { style: 'currency', currency: 'BRL' },
     ).format(amount);
     return formattedAmount;
   }
-  return '';
+  return 'invalid';
 };
