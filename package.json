@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html -p 3000 --open",
-    "build": "parcel build index.html --target browser --out-dir docs --public-url ./",
-    "test": "jest --notify --config=jest.config.js"
+    "build": "parcel build index.html --out-dir public",
+    "predeploy": "rm -rf public && parcel build index.html --out-dir public",
+    "deploy": "now --prod"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "gh-pages": "^2.2.0",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "parcel-bundler": "^1.12.4",
