@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoadingCard /> should render without error 1`] = `
+exports[`<LoadingWall /> should render without error 1`] = `
 <loadingWall
   loading={true}
 />

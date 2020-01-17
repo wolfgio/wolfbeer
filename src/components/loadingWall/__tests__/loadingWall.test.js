@@ -5,7 +5,7 @@ import LoadingWall from '../loadingWall';
 import { SpinnerIcon } from '../styles';
 import ReloadIcon from '../../../assets/reload.png';
 
-describe('<LoadingCard />', () => {
+describe('<LoadingWall />', () => {
   it('should render without error', () => {
     let root;
     act(() => {

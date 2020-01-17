@@ -1,13 +1,13 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 
-import Layout from '../layout';
+import SearchBox from '../searchBox';
 
-describe('<Layout />', () => {
+describe('<SearchBox />', () => {
   it('should render without error', () => {
     let root;
     act(() => {
-      root = create(<Layout />);
+      root = create(<SearchBox />);
     });
 
     expect(root.toJSON()).toMatchSnapshot();

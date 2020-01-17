@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should render without error 1`] = `
+<div
+  className="sc-AykKH jNELrK"
+>
+  <div
+    className="sc-AykKC gIAcmC"
+  >
+    <img
+      className="sc-AykKD hZucOd"
+      src={
+        Object {
+          "process": [Function],
+        }
+      }
+    />
+    <input
+      className="sc-AykKE jbwMtV"
+      id="autocomplete"
+      onFocus={[Function]}
+      placeholder="Pesquisar endereço..."
+      type="search"
+    />
+  </div>
+</div>
+`;

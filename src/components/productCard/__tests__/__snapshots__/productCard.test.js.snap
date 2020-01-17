@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductCard /> should render without error 1`] = `
+<div
+  className="sc-AykKC jtcLIx"
+>
+  <img
+    className="sc-AykKF bvQeNX"
+    onError={[Function]}
+    src="https://courier-images-codechallenge.s3-us-west-2.amazonaws.com/product/8868_205f958d-2e51-48a3-b4d5-a2998765571a.jpg"
+  />
+  <h4
+    className="sc-AykKD eDOqlo"
+  >
+    Skol 269ml - Unidade
+  </h4>
+  <p
+    className="sc-AykKE ZNAJM"
+  >
+    R$ 2,09
+  </p>
+  <div
+    className="sc-AykKG koTQQS"
+  >
+    <button
+      className="sc-AykKH lkunam"
+      color="#f44336"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Remover
+    </button>
+    <button
+      className="sc-AykKH cuoSYf"
+      color="#8bc34a"
+      onClick={[Function]}
+    >
+      Adicionar
+    </button>
+  </div>
+</div>
+`;
