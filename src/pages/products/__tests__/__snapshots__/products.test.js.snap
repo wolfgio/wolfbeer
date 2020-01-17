@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Products /> should render without error 1`] = `
+<div
+  className="sc-AykKD byAhix"
+>
+  <div
+    className="sc-AykKE bxQStN"
+  >
+    <p>
+      Entregar em:
+    </p>
+    <button
+      className="sc-AykKF eHfyqP"
+      onClick={[Function]}
+    >
+      <img
+        className="sc-AykKG cHyhJT"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </button>
+  </div>
+  <h4
+    style={
+      Object {
+        "margin": "16px 0",
+      }
+    }
+  >
+    Filtrar:
+  </h4>
+  <select
+    className="sc-AykKJ ctTap"
+    onChange={[Function]}
+  >
+    <option
+      value="all"
+    >
+      Todas
+    </option>
+  </select>
+  <input
+    className="sc-AykKI hQrNgC"
+    onChange={[Function]}
+    placeholder="Pesquisar produto..."
+    type="search"
+  />
+  <h4
+    className="sc-AykKK eLluSA"
+  >
+    Items selecionados: 0
+  </h4>
+  <div
+    className="sc-AykKH kvJHhB"
+  >
+    <h2>
+      Não encontramos nenhum produto :/
+    </h2>
+  </div>
+</div>
+`;

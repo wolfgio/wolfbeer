@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html -p 3000 --open",
+    "test": "jest --notify --config=jest.config.js",
     "build": "parcel build index.html --out-dir public",
     "predeploy": "rm -rf public && parcel build index.html --out-dir public",
     "deploy": "now --prod"
