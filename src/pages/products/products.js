@@ -15,6 +15,7 @@ import {
   CardGrid,
   SearchInput,
   CategorySelect,
+  ItemsCountLength,
 } from './styles';
 import ProductCard from '../../components/productCard/productCard';
 
@@ -29,12 +30,23 @@ const RenderLoadingCards = () => {
 const Products = () => {
   const { debouncedValue, setValue } = useDebounce(600);
   const [categoryId, setCategoryId] = useState(null);
+  const [selectedProducts, setProducts] = useState([]);
   const parsedQueryParams = queryString.parse(window.location.search);
 
   const popScreen = () => history.goBack();
 
   const handleInputChange = (e) => setValue(e.target.value);
   const handleCategoryChange = (e) => setCategoryId(e.target.value);
+  const handleAddProduct = (product) => {
+    const newProducts = [].concat(selectedProducts, product);
+    setProducts(newProducts);
+  };
+  const handleRemoveProduct = (productId) => {
+    const filteredProducts = selectedProducts.filter(
+      (product) => product.id !== productId,
+    );
+    setProducts(filteredProducts);
+  };
 
   const {
     data: categories,
@@ -44,7 +56,6 @@ const Products = () => {
   const {
     data: products,
     loading: productsLoading,
-    error: productsError,
   } = useQuery(LIST_PRODUCTS, {
     variables: {
       id: parsedQueryParams.poc_id,
@@ -52,8 +63,6 @@ const Products = () => {
       categoryId: categoryId === 'all' ? null : categoryId,
     },
   });
-
-  console.log(categoryId);
 
   return (
     <Container>
@@ -65,25 +74,39 @@ const Products = () => {
         </ChangeAddressButton>
       </AddressContainer>
       <h4 style={{ margin: '16px 0' }}>Filtrar:</h4>
-      <CategorySelect onChange={handleCategoryChange}>
-        <option value="all">Todas</option>
-        {categories && categories.allCategory.map((category) => (
-          <option value={category.id} key={category.id}>
-            {category.title}
-          </option>
-        ))}
-      </CategorySelect>
+      {!categoriesLoading && (
+        <CategorySelect onChange={handleCategoryChange}>
+          <option value="all">Todas</option>
+          {categories && categories.allCategory.map((category) => (
+            <option value={category.id} key={category.id}>
+              {category.title}
+            </option>
+          ))}
+        </CategorySelect>
+      )}
       <SearchInput
         placeholder="Pesquisar produto..."
         type="search"
         onChange={handleInputChange}
       />
+      <ItemsCountLength>{`Items selecionados: ${selectedProducts.length}`}</ItemsCountLength>
       <CardGrid>
         {productsLoading && RenderLoadingCards()}
         {products && products.poc && products.poc.products.length > 0
-          && products.poc.products.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
+          && products.poc.products.map((product) => {
+            const isSelected = selectedProducts.findIndex(
+              (_product) => _product.id === product.id,
+            ) !== -1;
+            return (
+              <ProductCard
+                product={product}
+                isSelected={isSelected}
+                key={product.id}
+                onAddProduct={handleAddProduct}
+                onRemoveProduct={handleRemoveProduct}
+              />
+            );
+          })}
         {!productsLoading && (!products || !products.poc || products.poc.products.length <= 0) && (
           <h2>Não encontramos nenhum produto :/</h2>
         )}

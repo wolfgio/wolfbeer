@@ -23,3 +23,14 @@ export const useDebounce = (delay) => {
     setValue,
   };
 };
+
+export const formatCurrency = (amount) => {
+  if (amount && amount > 0) {
+    const formattedAmount = new Intl.NumberFormat(
+      'pt-BR',
+      { style: 'currency', currency: 'BRL' },
+    ).format(amount);
+    return formattedAmount;
+  }
+  return '';
+};

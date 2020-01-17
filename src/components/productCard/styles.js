@@ -4,7 +4,7 @@ export const CardContainer = styled.div`
   border-radius: 2px;
   background-color: #FFF;
   padding: 16px;
-  height: 280px;
+  height: 320px;
   position: relative;
 
   display: flex;
@@ -23,7 +23,14 @@ export const CardTitle = styled.h4`
   font-size: 0.95rem;
   font-weight: 800;
   margin: 16px 0;
+  display: flex;
   flex-grow: 1;
+  text-align: left;
+`;
+
+export const CardPrice = styled.p`
+  font-weight: 800;
+  margin:  0 0 16px;
   display: flex;
   text-align: left;
 `;
@@ -48,7 +55,9 @@ export const CardButton = styled.button`
   font-size: 0.7rem;
   outline: none;
 
+  opacity: ${(props) => (props.disabled ? 0.3 : 1)};
+
   &:hover {
-    cursor: pointer;
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   }
 `;

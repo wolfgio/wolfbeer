@@ -43,7 +43,7 @@ export const CardGrid = styled.div`
   width: 100%;
   margin-top: 16px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-row-gap: 16px;
   grid-column-gap: 16px;
 
@@ -81,4 +81,8 @@ export const CategorySelect = styled.select`
   width: 100%;
   max-width: 320px;
   margin-bottom: 16px;
+`;
+
+export const ItemsCountLength = styled.h4`
+  margin: 16px 0 0 0;
 `;
