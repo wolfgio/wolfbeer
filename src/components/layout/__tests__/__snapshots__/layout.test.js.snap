@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingCard /> should render without error 1`] = `
+<div
+  className="sc-AykKD ivFVUv"
+>
+  <header
+    className="sc-AykKF kmszHb"
+  >
+    <div
+      className="sc-AykKG gcKfEN"
+    >
+      <img
+        className="sc-AykKH gqLSTR"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+      <div
+        className="sc-AykKI bMUZia"
+      >
+        <h1>
+          Wolfbeer
+        </h1>
+        <small>
+          Delivery
+        </small>
+      </div>
+    </div>
+  </header>
+  <div
+    className="sc-AykKE cMQUKQ"
+  />
+  <footer
+    className="sc-AykKC bUalAc"
+  >
+    <p>
+      made it by
+      <a
+        href="https://www.github.com/wolfgio"
+        rel="noreferrer noopener"
+        target="_blank"
+        title="Wolfgio"
+      >
+         Wolfgio
+      </a>
+    </p>
+    <p
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      Icons made by
+      <a
+        href="https://www.flaticon.com/authors/ddara"
+        rel="noreferrer noopener"
+        target="_blank"
+        title="dDara"
+      >
+         dDara,
+      </a>
+      <a
+        href="https://www.flaticon.com/authors/srip"
+        title="srip"
+      >
+         srip,
+      </a>
+      <a
+        href="https://www.flaticon.com/authors/freepik"
+        title="Freepik"
+      >
+         Freepik 
+      </a>
+      and
+      <a
+        href="https://www.flaticon.com/authors/bqlqn"
+        title="bqlqn"
+      >
+         bqlqn 
+      </a>
+      from
+      <a
+        href="https://www.flaticon.com/"
+        title="Flaticon"
+      >
+         www.flaticon.com
+      </a>
+    </p>
+  </footer>
+</div>
+`;

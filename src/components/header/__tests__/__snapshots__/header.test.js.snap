@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render without error 1`] = `
+<header
+  className="sc-AykKC kQjYic"
+>
+  <div
+    className="sc-AykKD kZMYJW"
+  >
+    <img
+      className="sc-AykKE cvsQeC"
+      src={
+        Object {
+          "process": [Function],
+        }
+      }
+    />
+    <div
+      className="sc-AykKF evZlmn"
+    >
+      <h1>
+        Wolfbeer
+      </h1>
+      <small>
+        Delivery
+      </small>
+    </div>
+  </div>
+</header>
+`;
