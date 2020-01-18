@@ -57,9 +57,45 @@ exports[`<Products /> should render without error 1`] = `
   <div
     className="sc-AykKH kvJHhB"
   >
-    <h2>
-      Não encontramos nenhum produto :/
-    </h2>
+    <div
+      className="sc-fzXfLO kAqEdz"
+    >
+      <img
+        className="sc-fzXfLR hwmOVx"
+        onError={[Function]}
+        src="https://courier-images-codechallenge.s3-us-west-2.amazonaws.com/product/8868_205f958d-2e51-48a3-b4d5-a2998765571a.jpg"
+      />
+      <h4
+        className="sc-fzXfLP jMGxHS"
+      >
+        Skol 269ml - Unidade
+      </h4>
+      <p
+        className="sc-fzXfLQ eLgwtS"
+      >
+        R$ 2,09
+      </p>
+      <div
+        className="sc-fzXfLS cIITvg"
+      >
+        <button
+          className="sc-fzXfLT bULOwQ"
+          color="#f44336"
+          disabled={true}
+          onClick={[Function]}
+        >
+          Remover
+        </button>
+        <button
+          className="sc-fzXfLT bMySkR"
+          color="#8bc34a"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Adicionar
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;

@@ -1,9 +1,13 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import { MockedProvider } from '@apollo/react-testing';
+import { fireEvent, render } from '@testing-library/react';
 import wait from 'waait';
 
 import Products from '../products';
+import LoadingCard from '../../../components/loadingCard/loadingCard';
+import ProductCard from '../../../components/productCard/productCard';
+
 import { LIST_PRODUCTS, SEARCH_CATEGORIES } from '../queries';
 
 const mocks = [
@@ -11,7 +15,7 @@ const mocks = [
     request: {
       query: LIST_PRODUCTS,
       variables: {
-        id: '532',
+        id: undefined,
         search: '',
         categoryId: null,
       },
@@ -48,6 +52,24 @@ const mocks = [
               ],
             },
           ],
+        },
+      },
+    },
+  },
+  {
+    request: {
+      query: LIST_PRODUCTS,
+      variables: {
+        id: undefined,
+        search: 'brahma',
+        categoryId: null,
+      },
+    },
+    result: {
+      data: {
+        poc: {
+          id: '532',
+          products: [],
         },
       },
     },
@@ -97,17 +119,55 @@ const mocks = [
 
 describe('<Products />', () => {
   it('should render without error', async () => {
-    let root;
+    let testRenderer;
     act(() => {
-      root = create(
+      testRenderer = create(
         <MockedProvider mocks={mocks} addTypename={false}>
           <Products />
         </MockedProvider>,
       );
     });
 
-    await wait(300);
+    await wait(1000);
 
-    expect(root.toJSON()).toMatchSnapshot();
+    const testInstance = testRenderer.root;
+
+    expect(testInstance.findByType(ProductCard)).toBeDefined();
+    expect(testInstance.findAllByType(LoadingCard)).toEqual([]);
+    expect(testRenderer.toJSON()).toMatchSnapshot();
+  });
+
+  it('should render loading component', () => {
+    let testRenderer;
+    act(() => {
+      testRenderer = create(
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Products />
+        </MockedProvider>,
+      );
+    });
+
+    const testInstance = testRenderer.root;
+    expect(testInstance.findAllByType(LoadingCard)).toBeDefined();
+    expect(testInstance.findAllByType(LoadingCard)).toHaveProperty('length', 13);
+  });
+
+  it('should render not found component', async () => {
+    const { findByPlaceholderText, findByText } = render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Products />
+      </MockedProvider>,
+    );
+
+    await wait(1000);
+
+    const input = await findByPlaceholderText('Pesquisar produto...');
+
+    fireEvent.change(input, { target: { value: 'brahma' } });
+
+    await wait(2000);
+
+    const errorFeedback = await findByText('Não encontramos nenhum produto :/');
+    expect(errorFeedback).toBeDefined();
   });
 });

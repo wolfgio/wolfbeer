@@ -29,7 +29,7 @@ const RenderLoadingCards = () => {
 
 const Products = () => {
   const { debouncedValue, setValue } = useDebounce(600);
-  const [categoryId, setCategoryId] = useState(null);
+  const [categoryId, setCategoryId] = useState('all');
   const [selectedProducts, setProducts] = useState([]);
   const parsedQueryParams = queryString.parse(window.location.search);
 
