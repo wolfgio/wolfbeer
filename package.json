@@ -27,7 +27,7 @@
     "apollo-boost": "^0.4.7",
     "graphql": "^14.5.8",
     "history": "^4.10.1",
-    "moment-timezone": "^0.5.27",
+    "moment-timezone": "^0.5.35",
     "normalize.css": "^8.0.1",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
